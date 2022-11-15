@@ -1,5 +1,6 @@
 *{
     box-sizing: border-box;
+    color: #2c353f;
 }
 
 
@@ -34,7 +35,7 @@
 
 .container .leftSide p{
     font-size: 18px;
-    color: #2c353f;
+   
 }
 
 .container .leftSide form{
@@ -71,10 +72,22 @@
     background-color: #2c353f;
     color: #CCC;
     font-weight: bold;
+    cursor: pointer;
+    transition: all ease .3s;
+}
+
+.container .leftSide form .buttonCalc:hover{
+    opacity: .8;
 }
 
 
 .container .rightSide{
     flex: 1;
-    background-color: blue;
+   
+}
+
+@media(max-width: 770px){
+    .container{
+        flex-direction: column;
+    }
 }
