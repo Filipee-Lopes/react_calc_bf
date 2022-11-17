@@ -11,7 +11,7 @@ import upImage from './assets/up.png';
 
 function App() {
   
-  const [checked, setChecked] = useState(false);
+  const [gender, setGender] = useState(false);
   const [age, setAge] = useState<number>(0);
   const [height, setHeight] = useState<number>(0);
   const [neck, setNeck] = useState<number>(0);
@@ -21,11 +21,11 @@ function App() {
   const [result, setResult] = useState<number>(0);
   const [frase, setFrase] = useState<string>('');
 
-  const handleChecked = (e : React.MouseEvent<HTMLElement>)=>{
+  const handleGender = (e : React.MouseEvent<HTMLElement>)=>{
     if(e.currentTarget.getAttribute('id') === 'genero_feminino'){
-      setChecked(true)
+      setGender(true)
     }else{
-      setChecked(false)
+      setGender(false)
     }
     
   }
@@ -54,45 +54,45 @@ function App() {
 
   const handleCalculate= (e: React.MouseEvent<HTMLElement>)=>{
     e.preventDefault(); 
-    if(checked && age && waist && hip && neck && height){
+    if(gender  && age && waist && hip && neck && height){
      const result = 495 / ( 1.29579 - 0.35004 * Math.log10( waist + hip - neck ) + 0.22100 * Math.log10( height ) ) - 450;
   
-    if(age >= 18 && age <= 21 && result >= 0 && result <= 33){
-      return(
+      if(age >= 18 && age <= 21 && result >= 0 && result <= 33){
+        return(
+            console.log(result),
+            setToShow(upImage),
+            setResult(result),
+            setFrase('Seu percentual de gordura está dentro do padrão da Marinha americana!')
+          )
+      } else if(age >= 22 && age <= 29 && result >= 0 && result <= 34){ 
+        return(
           console.log(result),
           setToShow(upImage),
           setResult(result),
           setFrase('Seu percentual de gordura está dentro do padrão da Marinha americana!')
-      )
-    } else if(age >= 22 && age <= 29 && result >= 0 && result <= 34){ 
-      return(
+        )
+      }else if(age >= 30 && age <= 39 && result >= 0 && result <=35){
+        return(
         console.log(result),
         setToShow(upImage),
         setResult(result),
         setFrase('Seu percentual de gordura está dentro do padrão da Marinha americana!')
-      )
-    }else if(age >= 30 && age <= 39 && result >= 0 && result <=35){
-      return(
-        console.log(result),
-        setToShow(upImage),
-        setResult(result),
-        setFrase('Seu percentual de gordura está dentro do padrão da Marinha americana!')
-      )
-    }else if(age >= 40 && result >= 0 && result  <= 36){
-      return(
-        console.log(result),
-        setToShow(upImage),
-        setResult(result),
-        setFrase('Seu percentual de gordura está dentro do padrão da Marinha americana!')
-      )
-    }else{
-      return(
-        console.log(result),
-        setToShow(downImage),
-        setResult(result),
-        setFrase('Seu percentual de gordura está fora do padrão da Marinha americana!')
-      )
-    }    
+        )
+      }else if(age >= 40 && result >= 0 && result  <= 36){
+        return(
+          console.log(result),
+          setToShow(upImage),
+          setResult(result),
+          setFrase('Seu percentual de gordura está dentro do padrão da Marinha americana!')
+        )
+      }else{
+        return(
+          console.log(result),
+          setToShow(downImage),
+          setResult(result),
+          setFrase('Seu percentual de gordura está fora do padrão da Marinha americana!')
+        )
+      }
 
     }else if(age && waist && neck && height){
       const result = 495 / ( 1.0324 - 0.19077 * Math.log10( waist - neck ) + 0.15456 * Math.log10( height ) ) - 450
@@ -139,11 +139,17 @@ function App() {
   } 
 
   const handleBackButton = ()=>{
+    
+
       {toShow &&
-      
-        setToShow(''),
-        setResult(0),
-        setFrase('')
+        setAge(0);
+        setHeight(0);
+        setWaist(0);
+        setNeck(0);
+        setHip(0);
+        setToShow('');
+        setResult(0);
+        setFrase('');
       
       }
   }
@@ -168,10 +174,10 @@ function App() {
             </p>
             <form >
               
-              <div className={styles.genderInput}>
-                <label htmlFor="genero"></label>
-                <input type='radio' onClick={handleChecked} id='genero_masculino' value='Homem' name='genero'/>Homem
-                <input type='radio' onClick={handleChecked}  id='genero_feminino' value='Mulher' name='genero'/>Mulher
+              <div  className={styles.genderInput}>
+                <label  htmlFor="genero"></label>
+                <input  disabled={toShow ? true : false} type='radio' onClick={handleGender} id='genero_masculino' value='Homem' name='genero'/>Homem
+                <input  disabled={toShow ? true : false} type='radio' onClick={handleGender}  id='genero_feminino' value='Mulher' name='genero'/>Mulher
               </div>
 
               <input 
@@ -179,37 +185,42 @@ function App() {
                 placeholder='Digite sua idade.'
                 onChange={handleAge}
                 value={age > 0 ? age :  ''}
+                disabled={toShow ? true : false}
               />
               <input 
                 type="number"
                 placeholder='Digite sua altura em (cm) Ex. 180.'
                 onChange={handleHeight}
                 value={height > 0 ? height : ''}
+                disabled={toShow ? true : false}
               />
               <input 
                 type="number"
                 placeholder='Digite a cicunferência do pescoço em (cm) Ex. 48.'
                 onChange={handleNeck}
                 value={neck > 0 ? neck : ''}
+                disabled={toShow ? true : false}
               />
              <input 
                 type="number"
                 placeholder='Digite a circunferência da cintura em (cm) Ex. 75.'
                 onChange={handleWaist}
                 value={waist > 0 ? waist : ''}
+                disabled={toShow ? true : false}
              />
-             {checked &&
+             {gender &&
               
               <input 
                 type="number"
                 placeholder='Digite a circunferencia do quadril em (cm) Ex. 80.'
                 onChange={handleHip}
                 value={hip > 0 ? hip : ''}
+                disabled={toShow ? true : false}
               />
               
               }
 
-              <button onClick={handleCalculate} className={styles.buttonCalc}>Calcular</button>
+              <button disabled={toShow ? true : false} onClick={handleCalculate} className={styles.buttonCalc}>Calcular</button>
             </form>
           </div>
           <div className={styles.rightSide}>
