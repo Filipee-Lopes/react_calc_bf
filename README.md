@@ -11,8 +11,7 @@
   <a href="#rocket-technologies">Tecnologias</a> &#xa0; | &#xa0;
   <a href="#white_check_mark-requirements">Requerimentos</a> &#xa0; | &#xa0;
   <a href="#checkered_flag-starting">Inicializando</a> &#xa0; | &#xa0;
-  <a href="#">Licensa</a> &#xa0; | &#xa0;
-  <a href="https://github.com/ElaineDelgado" target="_blank">Autora</a>
+  <a href="https://github.com/Filipee-Lopes" target="_blank">Autor</a>
 </p>
 
 <br>
