@@ -52,10 +52,6 @@ $ npm run dev
 # O servidor irá inicializar no endereço <http://localhost:5173>
 ```
 
-## :memo: Licensa ##
-
-Projeto sobre licensa MIT. Para mais detalhes: [LICENSE](LICENSE.md).
-
 
 Feito por <a href="https://github.com/Filipee-Lopes" target="_blank">Filipe Lopes</a>
 
