@@ -41,7 +41,7 @@ Antes de começar :checkered_flag:, você precisa ter [Git](https://git-scm.com)
 
 ```bash
 # Clonando o projeto:
-$ git clone https://github.com
+$ git clone https://github.com/Filipee-Lopes/react_calc_bf
 
 # Acessando:
 $ cd react_calc_bf
