@@ -46,6 +46,9 @@ $ git clone https://github.com/Filipee-Lopes/react_calc_bf
 # Acessando:
 $ cd react_calc_bf
 
+# Instalando:
+$ npm install
+
 # Rodando o projeto:
 $ npm run dev
 
